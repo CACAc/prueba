@@ -1,0 +1,58 @@
+header{
+    color: black;
+    background-color: grey;
+    font-weight:600;
+
+}
+
+nav{
+    background-color: yellow;
+    position: absolute;
+    width:120px;
+    height: 300px;
+    text-align:center;
+    right:0;
+    bottom: 30%; 
+
+    
+}
+
+section{
+    
+    background-color: darkblue; 
+        color: white; 
+        position: absolute;
+        left: 0;
+        right: 21%;
+        bottom:21%;
+        top:21%;
+        overflow:hidden;
+    border: 3px dashed aqua;
+}
+
+.sub{
+
+border: 2px dashed lightblue;
+margin-right: 20px;
+margin-left: 20px;
+color:white;
+margin-bottom: 60px;;
+}
+ 
+h2{
+background-color: white;
+color:blue;
+margin-top:0;
+
+ }
+
+ section.sub>footer{
+    color:black;
+    background-color: white;
+    font-weight:100;
+
+ }
+
+ footer{
+    background-color: grey;
+ }

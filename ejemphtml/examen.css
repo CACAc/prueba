@@ -1,0 +1,64 @@
+header{
+    color: black;
+    background-color: grey;
+    font-size: 10px;
+    position:absolute;
+    height: 50%;
+    width: 30%;
+    margin: 0;
+    z-index: 1;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 300px;
+}
+h2{
+    color: black;
+    background-color:yellow;
+    padding-bottom:500px;
+    position :absolute;
+    text-align: center;
+    height: 45%;
+    width: 30%;
+    right:30%;
+    margin:0;
+}
+
+aside {
+    position: relative;
+    
+    
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border: 1px solid black;
+    display: inline-block;
+    margin-right: 10px;
+    position:relative;
+    top: 45px;
+    left: 40%;
+}
+
+
+section{
+    position:relative;
+}
+#uno{
+position: absolute;
+bottom: -150%;
+right: 30%;
+background-color: blue;
+}
+
+#uno>p{
+    position: relative;
+    display:inline-block;
+    border: 1px solid black;
+    left:40%;
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding=="ISO-8859-1"?>
+<!DOCTYPE ejercicio1 SYSTEM "ejercicio1.dtd">
+<ejercicio1>
+    <alumno>
+        <nombre>Nombre1</nombre>
+        <apellido>Apellido1</apellido>
+        <edad>Edad1</edad>
+    </alumno>
+    <alumno>
+        <nombre>Nombre2</nombre>
+        <apellido>Apellido2</apellido>
+        <edad>Edad2</edad>
+    </alumno>
+    <alumno>
+        <nombre>Nombre3</nombre>
+        <apellido>Apellido3</apellido>
+        <edad>Edad3</edad>
+    </alumno>
+
+    <!--
+?:Si aparece 0 ó 1 veces: elemento_hijo?
+*: Si aparece 0 ó más veces: elemento_hijo*
++: Si aparece 1 ó más veces: elemento_hijo+
+
+Si aparece 1 sola vez: elemento_hijo
+Podrá definirse la aparición de un elemento u otro,
+pero no ambos usando el carácter “|”:
+<!ELEMENT elemento (elem_hijo_A | elem_hijo_B)>
+
+Ejemplos de dtd
+
+<!ELEMENT tematica (libreria+)>
+<!ATTLIST tematica tema CDATA #IMPLIED>
+<!ELEMENT libreria (libro+)>
+<!ATTLIST libreria nombre CDATA #IMPLIED>
+<!ATTLIST libreria web CDATA #IMPLIED>
+<!ELEMENT libro (titulo,autor+,editorial,anyo,web?,precio)>
+<!ATTLIST libro ISBN CDATA #REQUIRED>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT editorial (#PCDATA)>
+<!ELEMENT anyo (#PCDATA)>
+<!ELEMENT web (#PCDATA)>
+<!ELEMENT precio (#PCDATA)>
+<!ATTLIST precio moneda (euro|dolar) #REQUIRED>
+
+<!ELEMENT oferta (coche+)>
+<!ELEMENT coche (marca,modelo,motor,matricula,kilometros,precio_inicial,precio_oferta,extra*,foto+)>
+<!ELEMENT marca (#PCDATA)>
+<!ELEMENT modelo (#PCDATA)>
+<!ATTLIST modelo color CDATA #IMPLIED>
+<!ELEMENT motor (#PCDATA)>
+<!ATTLIST motor combustible (gasolina|diesel) #REQUIRED>
+<!ELEMENT matricula (#PCDATA)>
+<!ELEMENT kilometros (#PCDATA)>
+<!ELEMENT precio_inicial (#PCDATA)>
+<!ELEMENT precio_oferta (#PCDATA)>
+<!ELEMENT extra (#PCDATA)>
+<!ATTLIST extra valor CDATA #REQUIRED>
+<!ELEMENT foto (#PCDATA)>
+
+
+<!ELEMENT recetario (autor,receta+,fecha)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT fecha (#PCDATA)>
+<!ELEMENT receta (nombre,pais,ingredientes,elaboracion*,referencia?)>
+<!ELEMENT ingredientes (ingrediente+)>
+<!ATTLIST receta tipo CDATA #IMPLIED>
+<!ATTLIST receta dificultad (facil|intermedia|experto) #IMPLIED>
+<!ATTLIST receta coste (bajo|medio|alto) #IMPLIED>
+<!ATTLIST receta calorias (bajo|medio|alto) #IMPLIED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+<!ELEMENT ingrediente (cantidad,nombre_i)>
+<!ATTLIST ingrediente medida CDATA #IMPLIED>
+<!ATTLIST ingrediente id CDATA #IMPLIED>
+<!ELEMENT elaboracion (paso*)>
+<!ELEMENT referencia (#PCDATA)>
+<!ELEMENT cantidad (#PCDATA)>
+<!ELEMENT nombre_i (#PCDATA)>
+<!ELEMENT paso (#PCDATA)>
+<!ATTLIST paso id CDATA #IMPLIED>
+-->

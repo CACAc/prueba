@@ -1,0 +1,277 @@
+<!ELEMENT junio (modulo+)>
+<!ELEMENT modulo (nombre, examen+)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT examen (#PCDATA)>
+<!ATTLIST examen
+          aula CDATA #REQUIRED
+          dia CDATA #REQUIRED
+          grupo CDATA #REQUIRED
+          hora CDATA #REQUIRED>
+
+<!--
+    ejercicio:
+
+    modificalo para que:
+
+(a)Admita exactamente 8 modulos
+(b) el valor del atributo grupo solo puede ser 6L, 6M, 6P o 6U
+(c) el elemento examen no tendrá contenido
+(d) el atributo hora será opcional
+
+    <!ELEMENT junio (modulo, modulo, modulo, modulo, modulo, modulo, modulo, modulo)>
+<!ELEMENT modulo (nombre, examen*)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT examen EMPTY>
+<!ATTLIST examen
+          aula CDATA #REQUIRED
+          dia CDATA #REQUIRED
+          grupo (6L | 6M | 6P | 6U) #REQUIRED
+          hora CDATA #IMPLIED>
+
+          (a) Para garantizar que junio tenga exactamente 8 modulos, se han especificado individualmente.
+
+(b) Para limitar el valor del atributo grupo, se ha usado una enumeración en la declaración del atributo.
+
+(c) El contenido del elemento examen ha sido marcado como EMPTY, lo que significa que no debería tener contenido.
+
+(d) Para hacer opcional el atributo hora, se ha cambiado de #REQUIRED a #IMPLIED. Esto significa que puede ser omitido en las instancias del documento.
+
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="notas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="grupo" type="xs:string"/>
+        <xs:element name="alumnos" type="talumnos"/>
+        <xs:element name="evaluaciones" type="teval"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="talumnos">
+    <xs:sequence>
+      <xs:element name="alumno" type="talum" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="talum">
+    <xs:sequence>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="bloque" type="tbloque" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tbloque">
+    <xs:simpleContent>
+      <xs:extension base="xs:integer">
+        <xs:attribute name="id" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="teval">
+    <xs:sequence>
+      <xs:element name="primera" type="tprim"/>
+      <xs:element name="segunda" type="tprim"/>
+      <xs:element name="tercera" type="tprim"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tprim">
+    <xs:sequence>
+      <xs:element name="unidad" type="tuni" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tuni">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="parte" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+
+
+<!--
+    Ejercicio1:
+    (a)Diseña un documento XML para que sea valido para ese xml-schema
+    <?xml version="1.0" encoding="UTF-8"?>
+<notas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <grupo>Grupo A</grupo>
+    <alumnos>
+        <alumno>
+            <nombre>Juan</nombre>
+            <bloque id="b1">1</bloque>
+            <bloque id="b2">2</bloque>
+            <bloque id="b3">3</bloque>
+            <bloque id="b4">4</bloque>
+            <bloque id="b5">5</bloque>
+        </alumno>
+        <!-- More alumnos can go here -->
+    </alumnos>
+    <evaluaciones>
+        <primera>
+            <unidad parte="parte1">Unidad 1</unidad>
+            <!-- More unidades can go here -->
+        </primera>
+        <segunda>
+            <unidad parte="parte2">Unidad 2</unidad>
+            <!-- More unidades can go here -->
+        </segunda>
+        <tercera>
+            <unidad parte="parte3">Unidad 3</unidad>
+            <!-- More unidades can go here -->
+        </tercera>
+    </evaluaciones>
+</notas>
+
+
+Ejercicio2:
+(b)Modifica el xml-schema para que:
+1. Cada alumno tenga exactamente 5 bloques.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="notas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="grupo" type="xs:string"/>
+        <xs:element name="alumnos" type="talumnos"/>
+        <xs:element name="evaluaciones" type="teval"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="talumnos">
+    <xs:sequence>
+      <xs:element name="alumno" type="talum" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="talum">
+    <xs:sequence>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="bloque" type="tbloque" minOccurs="5" maxOccurs="5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tbloque">
+    <xs:simpleContent>
+      <xs:extension base="xs:integer">
+        <xs:attribute name="id" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="teval">
+    <xs:sequence>
+      <xs:element name="primera" type="tprim"/>
+      <xs:element name="segunda" type="tprim"/>
+      <xs:element name="tercera" type="tprim"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tprim">
+    <xs:sequence>
+      <xs:element name="unidad" type="tuni" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tuni">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="parte" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+
+
+
+Se ha modificado el elemento <xs:element name="bloque" type="tbloque" maxOccurs="unbounded"/> 
+en el tipo complejo talum a <xs:element name="bloque" type="tbloque" minOccurs="5" maxOccurs="5"/> para 
+asegurarse de que haya exactamente 5 bloques -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<florencia>
+  <museos>
+    <museo nombre="Uffizi">
+      <arquitecto>Vasari</arquitecto>
+      <construccion>16</construccion>
+    </museo>
+    <museo nombre="Bargello">     
+      <construccion>13</construccion>
+    </museo>
+    <museo nombre="Accademia">
+     
+      <construccion>18</construccion>
+    </museo>
+  </museos>
+  <artistas>
+    <artista nombre="Miguel_Angel">
+      <nombre>Miguel Ángel Buonarroti</nombre>
+      <nacimiento>1475</nacimiento>
+      <muerte>1564</muerte> 
+      <escultor></escultor>
+      <pintor></pintor>
+      <arquitecto></arquitecto>
+    </artista>
+    <artista nombre="Vasari">
+      <nombre>Giorgio Vasari</nombre>
+      <nacimiento>1511</nacimiento>
+      <muerte>1574</muerte>
+      <pintor></pintor>
+      <arquitecto></arquitecto>
+    </artista>
+    <artista nombre="Ghiberti">
+      <nombre>Lorenzo Ghiberti </nombre>
+      <nacimiento>1378</nacimiento>
+      <muerte>1455</muerte>
+      <orfebre></orfebre>
+      <escultor></escultor>
+    </artista>
+    <artista nombre="Donatello">
+      <nombre>Donato di Niccolò di Betto Bardi</nombre>
+      <nacimiento>1386</nacimiento>
+      <muerte>1466</muerte>
+      <escultor></escultor>
+    </artista>
+  </artistas>
+  <obras>
+    <obra autor="Miguel_Angel" museo="Bargello">Baco</obra>
+    <obra autor="Miguel_Angel" museo="Accademia">David</obra>
+    <obra autor="Donatello" museo="Bargello">David</obra>
+    <obra autor="Ghiberti" museo="Bargello">Sacrificio de Isaac</obra>
+    <obra autor="Miguel_Angel" museo="Uffizi">Tondo Doni</obra>
+    <obra autor="Vasari" museo="Uffizi">Uffizi</obra>
+  </obras>
+</florencia>
+
+
+De eso obten
+
+<listadp>
+<a>Miguel Angel Buonarroti (Miguel_Angel) -1475 -1564</a> 
+<a>Giorgia Vasari(Vasari) -1511 - 1574</a>
+<a>Lorenzo Ghiberti (Ghiberti)1378-1455</a>
+<a>Donato di Niccolò di Betto Bardi(Donadelio)- 1386 - 1466</a>
+</listado>
+
+
+RESULTADO:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<xsl:output method="xml" indent="yes"/>
+
+<xsl:template match="/">
+  <listado>
+    <xsl:for-each select="florencia/artistas/artista">
+      <a>
+        <xsl:value-of select="nombre"/>
+        <xsl:text> (</xsl:text>
+        <xsl:value-of select="@nombre"/>
+        <xsl:text>) -</xsl:text>
+        <xsl:value-of select="nacimiento"/>
+        <xsl:text> -</xsl:text>
+        <xsl:value-of select="muerte"/>
+      </a>
+    </xsl:for-each>
+  </listado>
+</xsl:template>
+
+</xsl:stylesheet>
+
+

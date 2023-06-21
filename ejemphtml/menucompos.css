@@ -1,0 +1,49 @@
+body{
+    font: 16pt "Tahoma";
+}
+body>header{
+    background-color: darkgrey; 
+    position: absolute; 
+    top:0;left:0; 
+    width: 100%;
+    height: 20%;
+    
+}
+body>footer{
+    background-color: darkgrey;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 20%;
+}
+section{
+        background-color: darkblue; 
+        color: white; 
+        position: absolute;
+        left: 0;
+        right: 21%;
+        bottom: 21%;
+        top:21%;
+        overflow: hidden;
+    border: 3px dashed aqua;
+}
+aside{
+    background-color: yellow; 
+    color:blue;
+    position: absolute;
+    right: 0;
+    height: 60%;
+    width: 20%;
+    top:20%;
+}
+section header{background-color: white; color: darkblue;
+}
+section footer{ background-color: white; color: darkblue; font: italic 8pt Comic Sans MS;  }
+article{
+    
+    width: 100%;
+    height: 100%;
+}
+article header, article footer, article p{padding: 0 20px;}
+h2{margin-top: 0;}

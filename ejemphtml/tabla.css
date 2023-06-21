@@ -1,0 +1,50 @@
+body {
+    position: relative;
+    height: 1000px;
+    margin: 0;
+    padding: 0;
+    display: table;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    display: table-cell;
+}
+
+aside a {
+    color: white;
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+section {
+    display: table-cell;
+    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid black;
+    vertical-align: top;
+}
+
+#section1 {
+    background-color: #f9c1c1;
+}
+
+#section2 {
+    background-color: #c1f9d2;
+}
+
+#section3 {
+    background-color: #c1d2f9;
+}

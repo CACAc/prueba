@@ -1,0 +1,59 @@
+table, td {
+  border:1px solid black;
+}
+
+article{
+  padding-top: 5%;
+  padding-left: 1%;
+  height: 100%;
+  display: block;
+
+}
+
+section {
+  position: absolute;
+  margin-top: 2%;
+  margin-left: 2%;
+  width: 80%;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 1%;
+  overflow: hidden;
+  height: 80%;
+    
+}
+
+aside {
+  position: absolute;
+  margin-top: 2%;
+  width: 12%;
+  height: 80%;
+  display: block;
+  left: 84%;
+  margin-top: 2%;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 1%;
+  text-align: center;
+}
+
+a>p{
+  height: 8%;
+  color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-right: 10%;
+  align-content: center;
+  margin-bottom: 5%;
+  margin-top: 30%;
+  background-color: darkgrey;
+  
+}
+a:link, a:visited, a:active {
+  text-decoration:none;
+}
+
+p {
+  font-weight: 700;
+  padding-top: 20%;
+}

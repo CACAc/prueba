@@ -1,0 +1,41 @@
+header{
+    color: black;
+    background-color: grey;
+    font-weight:600;
+
+}
+
+nav{
+    background-color: yellow;
+}
+
+section{
+    background-color: blue;
+}
+
+.sub{
+
+border: 2px dashed lightblue;
+margin-right: 20px;
+margin-left: 20px;
+color:white;
+margin-bottom: 60px;;
+}
+ 
+h2{
+background-color: white;
+color:blue;
+margin-top:0;
+
+ }
+
+ section.sub>footer{
+    color:black;
+    background-color: white;
+    font-weight:100;
+
+ }
+
+ footer{
+    background-color: grey;
+ }
